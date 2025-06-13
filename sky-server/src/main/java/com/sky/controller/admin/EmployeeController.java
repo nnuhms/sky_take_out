@@ -43,7 +43,7 @@ public class EmployeeController {
 
         Employee employee = employeeService.login(employeeLoginDTO);
 
-        //登录成功后，生成jwt令牌
+        //登录成功后，生成jwt令牌返回给前端，通知登陆成功，并且可以防止消息被篡改，保证安全性
         Map<String, Object> claims = new HashMap<>();
         claims.put(JwtClaimsConstant.EMP_ID, employee.getId());
         String token = JwtUtil.createJWT(
